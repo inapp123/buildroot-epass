@@ -17,6 +17,10 @@ cat << EOF
                                          
 Please copy 'epass_drm_app' and asset files.
 to app directory.
+
+
+
+
 EOF
 
     return
@@ -76,8 +80,6 @@ for i in $(seq 1 5); do
 done
 echo ""
 echo "Starting Application..."
-ls /sys/bus/iio/devices/
-
 sleep 1
 # echo 0 > /sys/class/vtconsole/vtcon1/bind
 # ./lvglsim

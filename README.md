@@ -1,40 +1,60 @@
 # 明日方舟 电子通行证 Buildroot SDK
 
-基于aodzip/buildroot-tiny200.
+基于aodzip老师的buildroot-tiny200 发行版，更改rootfs文件系统为UBIFS，更新上游U-boot，并进行硬件解码相关的修补。
 
-大概是一个混合版
+本buildroot是“三合一”buildroot，可以生成Kernel、U-boot、rootfs。
 
-## Install
+默认用户名：root 默认密码：toor
 
-### Install necessary packages
+电子通行证文件相关位于：buildroot-epass/board/rhodesisland/epass目录下
+
+## 如何构建系统
+
+### 安装工具包
 ``` shell
-sudo apt install wget unzip build-essential git bc swig libncurses-dev libpython3-dev libssl-dev
+sudo apt install wget unzip build-essential git bc swig libncurses-dev libpython3-dev libssl-dev mtd-utils
 sudo apt install python3-distutils
 ```
 
-### Download BSP
-**Notice: Root permission is not necessery for download or extract.**
+### 克隆本仓库
 ```shell
 git clone https://github.com/inapp123/buildroot-epass
 ```
 
-## Make the first build
-**Notice: Root permission is not necessery for build firmware.**
+### 应用 defconfig
 
-### Apply defconfig
-**Caution: Apply defconfig will reset all buildroot configurations to default values.**
+**请注意：应用defconfig会覆盖你之前的所有的配置！！**
 
-**Generally, you only need to apply it once.**
+**一般来说只需要应用一次**
+
 ```shell
 cd buildroot-epass
 make rhodesisland_epass_defconfig
 ```
 
-### Regular build
+### 构建
 ```shell
 make
 ```
+构建的结果在output/images中。其中flash_pack_xxxx.zip是带有Windows刷机工具的更新包，可以直接交付。
 
+### 重新构建内核及设备树
+```shell
+./rebuild-kernel.sh
+```
+
+### 重新构建U-boot
+```shell
+./rebuild-uboot.sh
+```
+
+### 直接烧录系统
+
+需要先安装[XFEL](https://github.com/xboot/xfel)
+
+```shell
+./flashsystem.sh
+```
 
 # Buildroot Package for Allwinner SIPs
 Opensource development package for Allwinner F1C100s & F1C200s

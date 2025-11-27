@@ -25,7 +25,9 @@ endif
 
 LIBCEDARC_INSTALL_TARGET_CMDS = $(TARGET_MAKE_ENV) $(MAKE) DESTDIR=$(TARGET_DIR) -C $(@D) install;
 LIBCEDARC_INSTALL_TARGET_CMDS += cp '$(@D)/library/$(LIBCEDARC_ARCHLIB)/libVE.so' '$(TARGET_DIR)/usr/lib/';
+LIBCEDARC_INSTALL_TARGET_CMDS += cp '$(@D)/library/$(LIBCEDARC_ARCHLIB)/libVE.so' '$(HOST_DIR)/arm-buildroot-linux-gnueabi/sysroot/lib/';
 LIBCEDARC_INSTALL_TARGET_CMDS += cp '$(@D)/library/$(LIBCEDARC_ARCHLIB)/libvideoengine.so' '$(TARGET_DIR)/usr/lib/';
+LIBCEDARC_INSTALL_TARGET_CMDS += cp '$(@D)/library/$(LIBCEDARC_ARCHLIB)/libvideoengine.so' '$(HOST_DIR)/arm-buildroot-linux-gnueabi/sysroot/lib/';
 
 ifeq ($(BR2_PACKAGE_LIBCEDARC_DECODER_AVS),y)
 	LIBCEDARC_INSTALL_TARGET_CMDS += cp '$(@D)/library/$(LIBCEDARC_ARCHLIB)/libawavs.so' '$(TARGET_DIR)/usr/lib/';
