@@ -63,7 +63,7 @@ echo -n -e "\e[0m"
 cat << EOF
 ---------------------------------------------
 EOF
-sleep 2
+sleep 1
 echo -n -e "\e[32m"
 echo "Welcome to Rhodes Island!"
 echo "You are in Terminal $(tty)."
@@ -74,13 +74,12 @@ chmod +x ./epass_drm_app
 ./epass_drm_app version
 cat /etc/os-release
 echo -n "System initializing"
-for i in $(seq 1 5); do
+for i in $(seq 1 3); do
     echo -n "."
     sleep 1
 done
 echo ""
 echo "Starting Application..."
-sleep 1
 # echo 0 > /sys/class/vtconsole/vtcon1/bind
 # ./lvglsim
 ./epass_drm_app > /dev/null

@@ -257,7 +257,7 @@
 };
 
 &rtp {
-	status = "disabled";
+	status = "okay";
 	pinctrl-0 = <&rtp_pins_01>;
 	pinctrl-names = "default";
 };
